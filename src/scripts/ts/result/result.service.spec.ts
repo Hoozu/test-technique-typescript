@@ -86,12 +86,22 @@ describe('ResultService', () => {
   describe(",aprés l\'ajout de 3 resultats,", () => {
 
     beforeEach(() => {
+			
       // init le service avec 3 resultats (doit etre identique que le step 2)
+			const result1: ResultModel = {id: 1,idOwner:74,idRecipients:[40],isSeen:false,eventResults:[],contentOfResult:"Test1"};
+      const result2: ResultModel = {id: 2,idOwner:75,idRecipients:[41],isSeen:false,eventResults:[],contentOfResult:"Test2"};
+      const result3: ResultModel = {id: 3,idOwner:76,idRecipients:[42],isSeen:false,eventResults:[],contentOfResult:"Test3"};
+
+      resultService = new ResultService();
+
+      resultService.addResult(result1);
+      resultService.addResult(result2);
+      resultService.addResult(result3);
     });
 
     //ps : je ne veux pas que les event de création soi initialisé dans le beforeEach ci dessus mais directement dans le resultService
     it("devrait avoir la list des résultat dans l\'order de création ( en se basant sur les events de création)", () => {
-      expect(false).toEqual(true);
+      expect(resultService.getAllSortedResult()[0].id).toEqual(1)
     });
 
     it("devrait avoir 1 event a la date de maintenant quand 1 résultat est vue", () => {

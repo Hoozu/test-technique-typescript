@@ -48,20 +48,26 @@ export class ResultService {
     return this.list;
   }
 
-  public getAllSortedResult() : Array<ResultModel> {
-		return [];
+	public getAllSortedResult() : Array<ResultModel> {
+    return this.list.sort((curr, next) => {
+      const currCreationDate = curr.eventResults.find(elem => elem.id === 'created')!.createdAt;
+      const nextCreationDate = next.eventResults.find(elem => elem.id === 'created')!.createdAt;
+
+      if(currCreationDate < nextCreationDate) return -1;
+      if(currCreationDate > nextCreationDate) return -1;
+      return 0;
+    })
+  }
   
+
+	public getAllResultSeen() : Array<ResultModel> {
+    return this.list.filter(elem => elem.isSeen === true);
   }
 
-  public getAllResultSeen() : Array<ResultModel> {
-		return this.list.filter(elem => elem.isSeen === true);
 
+	public getAllResultUnSeen() : Array<ResultModel> {
+    return this.list.filter(elem => elem.isSeen === false);
   }
 
-  public getAllResultUnSeen() : Array<ResultModel> {
-
-		return this.list.filter(elem => elem.isSeen === false);
-  }
 }
-
 
