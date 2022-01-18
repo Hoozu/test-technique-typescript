@@ -14,8 +14,11 @@ export class ResultService {
   }
 
   public seenResult(idResult:number) {
-		return [];
-
+		const resultIndex = this.list.findIndex(elem => elem.id === idResult);
+    if (resultIndex !== -1){
+      const result =  this.list[resultIndex];
+      result.isSeen = true;
+		}
   }
 
   public unseenResult(idResult:number) {
@@ -33,8 +36,7 @@ export class ResultService {
   }
 
   public getAllResultSeen() : Array<ResultModel> {
-		return [];
-  
+		return this.list.filter(elem => elem.isSeen === true);
   }
 
   public getAllResultUnSeen() : Array<ResultModel> {
