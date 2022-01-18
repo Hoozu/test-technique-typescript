@@ -29,7 +29,14 @@ export class ResultService {
   }
 
   public unseenResult(idResult:number) {
-		return [];
+		const resultIndex = this.list.findIndex(elem => elem.id === idResult);
+    if (resultIndex !== -1){
+      const result =  this.list[resultIndex];
+      const event: ResultEventModel = {id: "unseed", idOwner: result.idOwner, createdAt: new Date()}
+
+      result.isSeen = false;
+      result.eventResults.push(event)
+    }
     
   }
 

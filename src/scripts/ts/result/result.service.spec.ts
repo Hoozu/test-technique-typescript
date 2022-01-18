@@ -70,7 +70,11 @@ describe('ResultService', () => {
     });
 
     it("devrait avoir plus que 2 resultats vue dans la liste aprés qu\'il soit tous vue puis 1 ou la vue est enlevé", () => {
-      expect(false).toEqual(true);
+      resultService.seenResult(1);
+      resultService.seenResult(2);
+      resultService.seenResult(3);
+      resultService.unseenResult(1);
+      expect(resultService.getAllResultSeen().length).toEqual(2);
     });
 
     it("ne devrait pas planté aprés la vision d\'un resultat non ajouté", () => {
