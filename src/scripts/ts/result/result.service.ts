@@ -37,13 +37,13 @@ export class ResultService {
 
   public getAllResultSeen() : Array<ResultModel> {
 		return this.list.filter(elem => elem.isSeen === true);
+
   }
 
   public getAllResultUnSeen() : Array<ResultModel> {
 
-		return [];
+		return this.list.filter(elem => elem.isSeen === false);
   }
-
 }
 
 

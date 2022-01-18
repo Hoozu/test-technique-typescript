@@ -33,13 +33,23 @@ describe('ResultService', () => {
     });
   });
 /* step 2 : 3 resultats */
+
   describe("aprés l'ajout de 3 resultats,", () => {
     beforeEach(() => {
-      // init le service avec 3 resultats
+			const result1: ResultModel = {id: 1,idOwner:74,idRecipients:[40],isSeen:false,eventResults:[],contentOfResult:"Test1"};
+      const result2: ResultModel = {id: 2,idOwner:75,idRecipients:[41],isSeen:false,eventResults:[],contentOfResult:"Test2"};
+      const result3: ResultModel = {id: 3,idOwner:76,idRecipients:[42],isSeen:false,eventResults:[],contentOfResult:"Test3"};
+
+      resultService = new ResultService();
+
+      resultService.addResult(result1);
+      resultService.addResult(result2);
+      resultService.addResult(result3);
     });
 
     it("devrait avoir une liste de 3 resultats non vue aprés l\'ajout de 3 resultat.", () => {
-      expect(false).toEqual(true);
+			expect(resultService.getAllResultUnSeen().length).toEqual(3);
+
     });
 
     it("ne devrait pas authorisé l'ajout d'un résultats avec un id existent", () => {
