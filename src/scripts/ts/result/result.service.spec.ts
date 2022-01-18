@@ -49,11 +49,12 @@ describe('ResultService', () => {
 
     it("devrait avoir une liste de 3 resultats non vue aprés l\'ajout de 3 resultat.", () => {
 			expect(resultService.getAllResultUnSeen().length).toEqual(3);
-
     });
 
     it("ne devrait pas authorisé l'ajout d'un résultats avec un id existent", () => {
-      expect(false).toEqual(true);
+			const resultWithSameId: ResultModel = {id: 1,idOwner:74,idRecipients:[40],isSeen:false,eventResults:[],contentOfResult:"Test1"};
+      resultService.addResult(resultWithSameId)
+      expect(resultService.getAllResult().length).toEqual(3);
     });
 
     it("devrait avoir 1 resultats vue dans la liste aprés la vision d\'un resultat", () => {

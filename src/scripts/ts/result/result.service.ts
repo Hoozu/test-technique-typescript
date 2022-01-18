@@ -10,7 +10,11 @@ export class ResultService {
   }
 
   public addResult(newResult:ResultModel) {
-		this.list.push(newResult)
+		if(!this.resultAlreadyExist(newResult.id)) {
+      const event: ResultEventModel = {id: "created", idOwner: newResult.idOwner, createdAt: new Date()}
+      newResult.eventResults.push(event)
+      this.list.push(newResult)
+    }
   }
 
   public seenResult(idResult:number) {
@@ -24,6 +28,10 @@ export class ResultService {
   public unseenResult(idResult:number) {
 		return [];
     
+  }
+
+	private resultAlreadyExist(idResult:number): boolean {
+    return this.list.findIndex(elem => elem.id === idResult) !== -1;
   }
 
   public getAllResult() : Array<ResultModel> {
