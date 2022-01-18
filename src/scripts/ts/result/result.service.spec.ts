@@ -78,7 +78,8 @@ describe('ResultService', () => {
     });
 
     it("ne devrait pas planté aprés la vision d\'un resultat non ajouté", () => {
-      expect(false).toEqual(true);
+			resultService.seenResult(5);
+      expect(resultService.seenResult(5)).toBeUndefined();
     });
   });
   /* step 3 (evenement) */
