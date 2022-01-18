@@ -58,7 +58,8 @@ describe('ResultService', () => {
     });
 
     it("devrait avoir 1 resultats vue dans la liste aprés la vision d\'un resultat", () => {
-      expect(false).toEqual(true);
+      resultService.seenResult(1);
+      expect(resultService.getAllResultSeen().length).toEqual(1);
     });
 
     it("devrait avoir les 3 resultats vue dans la liste aprés qu\'il soit tous vue", () => {

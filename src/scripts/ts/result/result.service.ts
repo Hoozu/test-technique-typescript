@@ -21,7 +21,10 @@ export class ResultService {
 		const resultIndex = this.list.findIndex(elem => elem.id === idResult);
     if (resultIndex !== -1){
       const result =  this.list[resultIndex];
+      const event: ResultEventModel = {id: "seen", idOwner: result.idOwner, createdAt: new Date()}
+
       result.isSeen = true;
+      result.eventResults.push(event)
 		}
   }
 
