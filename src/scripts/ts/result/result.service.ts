@@ -68,6 +68,12 @@ export class ResultService {
 	public getAllResultUnSeen() : Array<ResultModel> {
     return this.list.filter(elem => elem.isSeen === false);
   }
-
+	
+	public numberOfEventSeen() : number
+  {
+    return 0;
+  }
 }
+
+
 

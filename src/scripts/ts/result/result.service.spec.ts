@@ -105,10 +105,21 @@ describe('ResultService', () => {
     });
 
     it("devrait avoir 1 event a la date de maintenant quand 1 résultat est vue", () => {
-      expect(false).toEqual(true);
+      resultService.seenResult(1);
+      
+      expect(resultService.getAllResult()[0].eventResults).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            createdAt: new Date()
+          })
+        ])
+      )
     });
 
     it("devrait avoir 2 events avec 2 dates différent aprés la vision d\'un resultat puis la suppression de la vision", () => {
+      resultService.seenResult(1);
+      resultService.unseenResult(1);
+
       expect(false).toEqual(true);
     });
 
