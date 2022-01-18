@@ -9,12 +9,8 @@ export class ResultService {
     this.list = [];
   }
 
-  public addResult(newResult:Re	sultModel) {
-    if(!this.resultAlreadyExist(newResult.id)) {
-      const event: ResultEventModel = {id: "created", idOwner: newResult.idOwner, createdAt: new Date()}
-      newResult.eventResults.push(event)
-      this.list.push(newResult)
-    }
+  public addResult(newResult:ResultModel) {
+		this.list.push(newResult)
   }
 
   public seenResult(idResult:number) {
@@ -42,8 +38,10 @@ export class ResultService {
   }
 
   public getAllResultUnSeen() : Array<ResultModel> {
+
 		return [];
-   
   }
+
+}
 
 
